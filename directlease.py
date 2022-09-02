@@ -5,14 +5,14 @@ from urllib.parse import urlparse
 
 
 BASE_URL = "https://tankservice.app-it-up.com/Tankservice/v2"
-VERSION = 45
-LANG = "nl"
+VERSION = 45  # value can be whatever
+LANG = "nl"  # value can be whatever
 IDENTIFIER = "this can be whatever you want"
 
 
 def calculate_checksum(url: str):
     url_obj = urlparse(url)
-    ts = int(time())
+    ts = int(time())  # value can be whatever
 
     var19 = f"{url_obj.path}?{url_obj.query}"
     var17 = f"{IDENTIFIER}/{ts}/"
