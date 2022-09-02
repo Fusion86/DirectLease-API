@@ -1,18 +1,24 @@
 import hashlib
+from uuid import uuid4
 import requests
 from time import time
+from datetime import datetime
 from urllib.parse import urlparse
 
 
 BASE_URL = "https://tankservice.app-it-up.com/Tankservice/v2"
-VERSION = 45  # value can be whatever
-LANG = "nl"  # value can be whatever
-IDENTIFIER = "this can be whatever you want"
+
+# All the values below can be whatever you want, these are just the 'official' values.
+VERSION = 45
+LANG = "nl"
+IDENTIFIER = datetime.today().strftime("%Y%m%d") + "_" + str(uuid4())
 
 
 def calculate_checksum(url: str):
     url_obj = urlparse(url)
-    ts = int(time())  # value can be whatever
+
+    # Timestamp is not actually used, so it can be whatever you want.
+    ts = int(time())
 
     var19 = f"{url_obj.path}?{url_obj.query}"
     var17 = f"{IDENTIFIER}/{ts}/"
